@@ -61,6 +61,7 @@ with tab1 :
                     .applymap(color_cet, subset=["%CET"])
                     .applymap(color_nc, subset =["%NC"])
                     .applymap(color_g,subset =["%GESTIONADO"])
+                    .set_properties(**{'font-weight': 'bold'})
                     )
             tablatipi = datos["DESCRIPCION_CONTACTO"].value_counts().reset_index()
 

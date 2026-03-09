@@ -187,9 +187,9 @@ with tab1 :
                         .applymap(color_nc, subset =["%NC"])
                         .applymap(color_g,subset =["%GESTIONADO"])
                         .set_properties(**{'font-weight': 'bold'})
-                        .set_table_styles([{'selector': 'th.row_heading', 'props': [('font-weight', 'bold')]},  # filas
-                         {'selector': 'th.col_heading', 'props': [('font-weight', 'bold')]}   # columnas
-    ])
+                        .set_table_styles([
+                             {'selector': 'th.row_heading', 'props': [('font-weight', 'bold')]},
+                             {'selector': 'th.col_heading', 'props': [('font-weight', 'bold')]}])
                         )     
           tablatipi = datos["DESCRIPCION_CONTACTO"].value_counts().reset_index()
 

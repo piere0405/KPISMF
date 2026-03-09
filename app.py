@@ -180,6 +180,7 @@ with tab1 :
                         return "background-color: #ffc107; color: black"   # amarillo
                     else:
                         return "background-color: #28a745; color: white"   # verde
+          tablas3 = tablas3.reset_index()
           st.dataframe(
                         tablas3.style
                         .format({"%GESTIONADO":"{:.2F}%","%CET": "{:.2f}%","%NC": "{:.2F}%"})
@@ -187,10 +188,7 @@ with tab1 :
                         .applymap(color_nc, subset =["%NC"])
                         .applymap(color_g,subset =["%GESTIONADO"])
                         .set_properties(**{'font-weight': 'bold'})
-                        .set_table_styles([
-                             {'selector': 'th.row_heading', 'props': [('font-weight', 'bold')]},
-                             {'selector': 'th.col_heading', 'props': [('font-weight', 'bold')]}])
-                        )     
+                        )   
           tablatipi = datos["DESCRIPCION_CONTACTO"].value_counts().reset_index()
 
           tablatipi.columns = ["DESCRIPCION_CONTACTO","LEADS"]

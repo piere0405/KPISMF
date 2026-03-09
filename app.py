@@ -62,7 +62,7 @@ with tab1 :
                     .applymap(color_nc, subset =["%NC"])
                     .applymap(color_g,subset =["%GESTIONADO"])
                     )
-            tablatipi = df["DESCRIPCION_CONTACTO"].value_counts().reset_index().isin(plazas)
+            tablatipi = datos["DESCRIPCION_CONTACTO"].value_counts().reset_index().
 
             tablatipi.columns = ["DESCRIPCION_CONTACTO","LEADS"]
 

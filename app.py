@@ -156,8 +156,8 @@ with tab1 :
                     tablas3.get("NO CONTACTO",0)
                     )
           tablas3["TOTAL DATA"] = total
-          tablas3["%CET"] = ((tablas3.get("CONTACTO CON TITULAR",0) / total) * 100).fillna(0)
-          tablas3["%NC"] = ((tablas3.get("NO CONTACTO", 0) / total) * 100).fillna(0)
+          tablas3["%CET"] = ((tablas3.get("CONTACTO CON TITULAR",0) / total_gestionado) * 100).fillna(0)
+          tablas3["%NC"] = ((tablas3.get("NO CONTACTO", 0) / total_gestionado) * 100).fillna(0)
           tablas3["%GESTIONADO"] = (((total -tablas3["Sin Gestionar"])/total)*100).fillna(0)
           def color_cet(val):
                     if val < 50 :

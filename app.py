@@ -215,5 +215,5 @@ with tab3:
         if plaza :
             datos = df_precal[df_precal["Supervisor"].isin(plaza)]
             riveros = st.selectbox("Elije jerarquia",jerarquia)
-            tabla = pd.crosstab(datos["DIA"],datos[riveros])
+            tabla = pd.crosstab(datos[riveros],datos["DIA"])
             st.dataframe(tabla)

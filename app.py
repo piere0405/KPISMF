@@ -211,7 +211,7 @@ with tab3:
         jerarquia = ["Supervisor","NOMBRE_USUARIO"]
         plaza = st.multiselect("ELIGE SUPERVISOR",supervisores)
         df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
-        df_precal["DIA"] = df_precal["FECHA"].dt.today
+        df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
             datos = df_precal[df_precal["Supervisor"].isin(plaza)]
             riveros = st.selectbox("Elije jerarquia",jerarquia)

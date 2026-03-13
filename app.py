@@ -205,3 +205,16 @@ with tab3:
     precales = st.file_uploader("Sube el archivo de precales",type=[".xlsx"])
     if precales is None :
         st.warning("Debes cargar tu archivo para que tengas tu reporte")
+    else :
+        df_precal  = pd.read_excel(precales)
+        supervisores = df_precal["Supervisor"].unique()
+        jerarquia = ["Supervisor","NOMBRE_USUARIO"]
+        plaza = st.multiselect("ELIGE SUPERVISOR",supervisores)
+        if plaza :
+            datos = df_precal[df_precal["Supervisor"].isin(plaza)]
+            datos["dia"] = 
+            riveros = st.selectbox("Elije jerarquia",jerarquia)
+            datos["FECHA"] = pd.datetime(datos["FECHA"])
+            datos["DIA"] = datos["FECHA"].dt.today
+            tabla = st.crosstab(datos["DIA"],datos[jerarquia])
+            st.dataframe(tabla)

@@ -209,11 +209,14 @@ with tab3:
         df_precal  = pd.read_excel(precales)
         supervisores = df_precal["Supervisor"].unique()
         jerarquia = ["Supervisor","NOMBRE_USUARIO"]
+        colu = ["DIA","COLOR RESPUESTA BANCO"]
         plaza = st.multiselect("ELIGE SUPERVISOR",supervisores)
         df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
         df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
             datos = df_precal[df_precal["Supervisor"].isin(plaza)]
             riveros = st.selectbox("Elije jerarquia",jerarquia)
+            columnas = st.selectbox("Elije vista : ",colu)
+            tabla = pd.crosstab(datos[columnas],datos[riveros])
             tabla = pd.crosstab(datos[riveros],datos["DIA"])
             st.dataframe(tabla)

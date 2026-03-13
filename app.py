@@ -210,7 +210,7 @@ with tab3:
         supervisores = df_precal["Supervisor"].unique()
         jerarquia = ["Supervisor","NOMBRE_USUARIO"]
         plaza = st.multiselect("ELIGE SUPERVISOR",supervisores)
-        df_precal["FECHA"] = pd.datetime(df_precal["FECHA"])
+        df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
         df_precal["DIA"] = df_precal["FECHA"].dt.today
         if plaza :
             datos = df_precal[df_precal["Supervisor"].isin(plaza)]

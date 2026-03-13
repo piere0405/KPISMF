@@ -216,7 +216,7 @@ with tab3:
         if plaza :
             datos = df_precal[df_precal["Supervisor"].isin(plaza)]
             datos_duplicados = datos.duplicated().sum()
-            st.warning(f"Se detecto {datos_duplicados} duplicados")
+            st.warning(f"Se detecto {datos_duplicados} precales duplicados")
             riveros = st.selectbox("Elije jerarquia",jerarquia)
             columnas = st.selectbox("Elije vista : ",colu)
             tabla = pd.crosstab(datos[riveros],datos[columnas])

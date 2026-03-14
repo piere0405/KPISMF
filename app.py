@@ -225,7 +225,7 @@ with tab3:
             columnas = st.selectbox("Elije vista : ",colu)
             if columnas == "DIA" :
                tabla = pd.crosstab(datos[riveros],datos[columnas])
-               tabla["PROMEDIO PRECAL"] = tabla[columnas].expanding().mean()
+               tabla["PROMEDIO PRECAL"] = tabla.mean(axis=1)
                st.dataframe(tabla)
             else :
                 tabla = pd.crosstab(datos[riveros],datos[columnas])

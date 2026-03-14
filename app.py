@@ -214,10 +214,26 @@ with tab3:
         df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
         df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
-            datos = df_precal[df_precal["Supervisor"].isin(plaza)]
+            datos = df_precal[df_precal["Supervisor"].isin(plaza) & ((df_precal["COLOR RESPUESTA BANCO"].notna()) & df_precal["COLOR RESPUESTA BANCO"] != "" ]
             datos_duplicados = datos.duplicated().sum()
             st.warning(f"Se detecto {datos_duplicados} precales duplicados")
+            st.success("Se elimino datos vacios")
             riveros = st.selectbox("Elije jerarquia",jerarquia)
             columnas = st.selectbox("Elije vista : ",colu)
-            tabla = pd.crosstab(datos[riveros],datos[columnas])
-            st.dataframe(tabla)
+            if columnas == "DIA" :
+               tabla = pd.crosstab(datos[riveros],datos[columnas])
+               tabla["PROMEDIO PRECAL"] = tabla[columnas].expanding().mean()
+               st.dataframe(tabla)
+            else :
+                tabla = pd.crosstab(datos[riveros],datos[columnas])
+                total_colores = (tabla.get("Amarillo",0)+
+                                 tabla.get("Marron",0)+ 
+                                 tabla.get("Plomo",0) +  
+                                 tabla.get("Rojo",0) +
+                                 tabla.get("Rosado",0) +
+                                 tabla.get("Verde",0) +
+                                 tabla.get("Verde") +
+                                 tabla.get("Verde_Claro",0))
+                tabla["%VERDE"] = tabla.get("verde")+tabla.get("Verde_Claro",0)/total_colores
+                st.dataframe(tabla)
+                

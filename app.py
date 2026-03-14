@@ -239,5 +239,6 @@ with tab3:
                                  tabla.get("Verde_Claro",0))
                 verde_total = tabla.get("Verde", 0) + tabla.get("Verde_Claro", 0)                
                 tabla["%VERDE"] = (verde_total/total_colores)*100
+                tabla["%PLOMOS"] = (tabla.get("Plomo",0)/total_colores)*100
                 st.dataframe(tabla)
                 

@@ -237,6 +237,7 @@ with tab3:
                                  tabla.get("Verde",0) +
                                  tabla.get("Verde") +
                                  tabla.get("Verde_Claro",0))
-                tabla["%VERDE"] = tabla.get("verde")+tabla.get("Verde_Claro",0)/total_colores
+                verde_total = tabla.get("Verde", 0) + tabla.get("Verde_Claro", 0)                
+                tabla["%VERDE"] = verde_total/total_colores
                 st.dataframe(tabla)
                 

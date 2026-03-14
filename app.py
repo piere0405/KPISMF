@@ -214,7 +214,10 @@ with tab3:
         df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
         df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
-            datos = df_precal[df_precal["Supervisor"].isin(plaza) & ((df_precal["COLOR RESPUESTA BANCO"].notna() & df_precal["COLOR RESPUESTA BANCO"] != "" )]
+            datos = df_precal[
+                (df_precal["Supervisor"].isin(plaza)) &
+                (df_precal["COLOR RESPUESTA BANCO"].notna()) &
+                (df_precal["COLOR RESPUESTA BANCO"] != "")]
             datos_duplicados = datos.duplicated().sum()
             st.warning(f"Se detecto {datos_duplicados} precales duplicados")
             st.success("Se elimino datos vacios")

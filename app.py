@@ -227,7 +227,7 @@ with tab3:
                tabla = pd.crosstab(datos[riveros],datos[columnas])
                tabla["PROMEDIO PRECAL"] = tabla.mean(axis=1)
                tabla = tabla.reset_index()
-               st.dataframe(tabla.style.format({"PROMEDIO PRECAL":"{:.2F}"}))
+               st.dataframe(tabla.style.format({"PROMEDIO PRECAL":"{:.1F}"}))
             else :
                 tabla = pd.crosstab(datos[riveros],datos[columnas])
                 total_colores = (tabla.get("Amarillo",0)+

@@ -220,7 +220,7 @@ with tab3:
                 (df_precal["Supervisor"].isin(plaza)) &
                 (df_precal["COLOR RESPUESTA BANCO"].notna()) &
                 (df_precal["COLOR RESPUESTA BANCO"] != "")].drop_duplicates(subset=["DNI","NOMBRE_USUARIO"])
-            st.warning(f"Se elimino precales duplicados")
+            st.success(f"Se elimino precales duplicados")
             st.success(f"Se elimino datos vacios")
             riveros = st.selectbox("Elije jerarquia",jerarquia)
             columnas = st.selectbox("Elije vista : ",colu)

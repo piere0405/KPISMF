@@ -214,13 +214,14 @@ with tab3:
         df_precal["FECHA"] = pd.to_datetime(df_precal["FECHA"])
         df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
+            datos_duplicados = df_precal[["DNI","NOMBRE_USUARIO"]].duplicated().sum()
+            datos_vacios =df_precal[df_precal["COLOR RESPUESTA BANCO"] == ""].sum()
             datos = df_precal[
                 (df_precal["Supervisor"].isin(plaza)) &
                 (df_precal["COLOR RESPUESTA BANCO"].notna()) &
-                (df_precal["COLOR RESPUESTA BANCO"] != "")]
-            datos_duplicados = datos[["DNI","NOMBRE_USUARIO"]].duplicated().sum()
-            st.warning(f"Se detecto {datos_duplicados} precales duplicados")
-            st.success("Se elimino datos vacios")
+                (df_precal["COLOR RESPUESTA BANCO"] != "")].drop_duplicates(subset=["DNI","NOMBRE_USUARIO"])
+            st.warning(f"Se elimino {datos_duplicados} precales duplicados")
+            st.success(f"Se elimino {datos_vacios} datos vacios")
             riveros = st.selectbox("Elije jerarquia",jerarquia)
             columnas = st.selectbox("Elije vista : ",colu)
             if columnas == "DIA" :

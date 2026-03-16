@@ -226,7 +226,8 @@ with tab3:
             if columnas == "DIA" :
                tabla = pd.crosstab(datos[riveros],datos[columnas])
                tabla["PROMEDIO PRECAL"] = tabla.mean(axis=1)
-               st.dataframe(tabla)
+               tabla = tabla.reset_index()
+               st.dataframe(tabla.style.format({"PROMEDIO PRECAL":"{:.2F}"}))
             else :
                 tabla = pd.crosstab(datos[riveros],datos[columnas])
                 total_colores = (tabla.get("Amarillo",0)+
@@ -241,5 +242,5 @@ with tab3:
                 tabla["%VERDE"] = (verde_total/total_colores)*100
                 tabla["%PLOMOS"] = (tabla.get("Plomo",0)/total_colores)*100
                 tabla = tabla.reset_index()
-                st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%","PROMEDIO PRECAL" :"{:.2f}"}))
+                st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%"}))
                 

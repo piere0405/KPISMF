@@ -215,7 +215,7 @@ with tab3:
         df_precal["DIA"] = df_precal["FECHA"].dt.day
         if plaza :
             datos_duplicados = df_precal[["DNI","NOMBRE_USUARIO"]].duplicated().sum()
-            datos_vacios =(df_precal["COLOR RESPUESTA BANCO"== "").sum()
+            datos_vacios =(df_precal["COLOR RESPUESTA BANCO"]== "").sum()
             datos = df_precal[
                 (df_precal["Supervisor"].isin(plaza)) &
                 (df_precal["COLOR RESPUESTA BANCO"].notna()) &

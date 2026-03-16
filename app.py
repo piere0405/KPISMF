@@ -248,5 +248,6 @@ with tab3:
                 tabla = tabla.reset_index()
                 st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%"})
                                   .set_properties(**{'font-weight': 'bold'})
-                                  .background_gradient(cmap="RdYlGn", subset=["%VERDE"]))
+                                  .background_gradient(cmap="RdYlGn", subset=["%VERDE"])
+                                  .background_gradient(cmp="RdYlGn_r",subset=["%PLOMOS"]))
                 

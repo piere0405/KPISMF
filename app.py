@@ -218,7 +218,7 @@ with tab3:
                 (df_precal["Supervisor"].isin(plaza)) &
                 (df_precal["COLOR RESPUESTA BANCO"].notna()) &
                 (df_precal["COLOR RESPUESTA BANCO"] != "")]
-            datos_duplicados = datos["DNI"].duplicated().sum()
+            datos_duplicados = datos[["DNI","NOMBRE_USUARIO"]].duplicated().sum()
             st.warning(f"Se detecto {datos_duplicados} precales duplicados")
             st.success("Se elimino datos vacios")
             riveros = st.selectbox("Elije jerarquia",jerarquia)

@@ -243,5 +243,6 @@ with tab3:
                 tabla["%VERDE"] = (verde_total/total_colores)*100
                 tabla["%PLOMOS"] = (tabla.get("Plomo",0)/total_colores)*100
                 tabla = tabla.reset_index()
-                st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%"}))
+                st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%"})
+                                   .set_properties(**{'font-weight': 'bold'})
                 

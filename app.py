@@ -225,6 +225,7 @@ with tab3:
             columnas = st.selectbox("Elije vista : ",colu)
             if columnas == "DIA" :
                tabla = pd.crosstab(datos[riveros],datos[columnas])
+               tabla["TOTAL DE PRECALES"] = tabla.sum(axis=1)
                tabla["PROMEDIO PRECAL"] = tabla.mean(axis=1)
                tabla = tabla.reset_index()
                st.dataframe(tabla.style.format({"PROMEDIO PRECAL":"{:.1F}"})
@@ -245,5 +246,5 @@ with tab3:
                 tabla["%PLOMOS"] = (tabla.get("Plomo",0)/total_colores)*100
                 tabla = tabla.reset_index()
                 st.dataframe(tabla.style.format({"%VERDE":"{:.2F}%","%PLOMOS":"{:.2F}%"})
-                                   .set_properties(**{'font-weight': 'bold'}))
+                                  .set_properties(**{'font-weight': 'bold'}))
                 

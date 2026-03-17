@@ -200,11 +200,7 @@ with tab1 :
 with tab2:
     ventas = st.file_uploader("Sube el drive de ventas",type=[".xlsx"])
     if ventas is None :
-        st.warning("Debas cargar tu archivo para que tengas tu reporte")
-    else :
-        df_ventas = pd.read_excel(ventas)
-        hojas = df_ventas.sheet_names
-        plazas = st.selectbox("ELIJE PLAZA : " ,hojas)    
+        st.warning("Debas cargar tu archivo para que tengas tu reporte")   
 with tab3:
     precales = st.file_uploader("Sube el archivo de precales",type=[".xlsx"])
     if precales is None :

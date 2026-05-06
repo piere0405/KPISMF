@@ -119,12 +119,16 @@ with tab1 :
                     else:
                         return "background-color: #28a745; color: white"   # verde
             st.dataframe(
-                        tablas2.style
-                        .format({"%GESTIONADO":"{:.2F}%","%CET": "{:.2f}%","%NC": "{:.2F}%"})
-                        .applymap(color_cet, subset=["%CET"])
-                        .applymap(color_nc, subset =["%NC"])
-                        .applymap(color_g,subset =["%GESTIONADO"])
-                        )     
+                tablas2.style
+                .format({
+                    "%GESTIONADO": "{:.2f}%",
+                    "%CET": "{:.2f}%",
+                    "%NC": "{:.2f}%"
+                })
+                .map(color_cet, subset=["%CET"])
+                .map(color_nc, subset=["%NC"])
+                .map(color_g, subset=["%GESTIONADO"])
+            )
             tablatipi = datos["DESCRIPCION_CONTACTO"].value_counts().reset_index()
 
             tablatipi.columns = ["DESCRIPCION_CONTACTO","LEADS"]
